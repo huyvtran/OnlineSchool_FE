@@ -1,0 +1,69 @@
+  <ion-menu side = "start" contentId = "main">
+    <ion-header class="submit-btn">
+      <ion-toolbar class = "ion-text-center ion-padding">
+        <ion-row>
+          <ion-col size = "12" class="ion-text-center">
+            <ion-img src="../../../assets/images/medha_icon.png"></ion-img>
+            <h5>Hi, {{dataStorage.userName}} </h5>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-item  lines = "none" detail (click) = "loadprofilescreen()">
+        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>My Profile</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "loadTeacherSubjects()" 
+      *ngIf = "dataStorage.accesslevelid === '1' && dataStorage.groupid === '1'">
+        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>Teacher Subjects</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "loadTeacherMaster()" 
+      *ngIf = "dataStorage.accesslevelid === '1' && dataStorage.groupid === '1'">
+        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>Teacher Master</ion-label>
+      </ion-item>
+      <ion-item  lines = "none" detail (click) = "loadStudentSubects()" 
+      *ngIf = "dataStorage.accesslevelid === '1' && dataStorage.groupid === '1'">
+        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>Student Subjects</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "loadStudentMaster()" 
+      *ngIf = "dataStorage.accesslevelid === '1' && dataStorage.groupid === '1'">
+        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>Student Master</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "loadchangepassword()">
+        <ion-icon name="lock-closed-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>Change Password</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "loadFAQ()">
+        <ion-icon name="paper-plane-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>FAQ</ion-label>
+      </ion-item>
+
+      <ion-item  lines = "none" detail (click) = "logout()">
+        <ion-icon name="power" slot="start" color="primary"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
+    </ion-content>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p style="display:flex; justify-content: center;">
+          Powered by 
+          <img style="margin-top: 3.5px; margin-left: 3px;" src="../../../assets/images/finsol.png">
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-footer class="ion-text-center">
+      <ion-note>Version 1.0.0</ion-note>
+    </ion-footer>
+  </ion-menu>

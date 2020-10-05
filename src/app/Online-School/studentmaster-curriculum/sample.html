@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<mat-card>
+    <form [formGroup] = "sampleForm" (ngSubmit) = "onSubmit()" autocomplete="off">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="form-group">
+                    <mat-form-field>
+                        <input type="text"
+                        matInput
+                        placeholder="Name"
+                        formControlName="name"
+                        required
+                        minlength="6"
+                        maxlength="25"
+                        >
+                        <mat-error *ngIf = "sampleForm.controls['name'].hasError('required')">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class ="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-select formControlName = "status" required>
+                            <mat-option *ngFor = "let status of statuslist" [value] = "status.id">
+                                {{status.status}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="form-group">
+                    <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn"
+                    >
+                    Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-card>

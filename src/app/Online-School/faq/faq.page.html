@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>FAQS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor = "let faq of faqArray" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ion-text-justify">
+          {{faq.question}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+       <mat-panel-description class="ion-text-justify">
+        {{faq.answer}}
+      </mat-panel-description>
+    </mat-expansion-panel>
+    </mat-accordion>
+</ion-content>

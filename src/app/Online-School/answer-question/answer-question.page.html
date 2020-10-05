@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Question & Answer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size = "12">
+         <!--  style = "background-color: #5278D2;" -->
+          <ion-card color = "success">
+            <ion-card-content class="ion-text-center">
+              <ion-card-title>
+             <span class= "card-txt">{{subjectName}}</span>   
+              </ion-card-title>
+    
+              <ion-card-subtitle>
+                <span class= "card-txt">{{lessonId}}. {{lessonName}}</span>   
+              </ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <form [formGroup] = "AnswerqtnForm" autocomplete="off" > 
+          <ion-label class="txtclass">{{doubt}}</ion-label> 
+              <ion-item>
+                <ion-textarea rows="10" formControlName="answer" type="text" >
+                </ion-textarea>
+              </ion-item>
+              <br>
+              <ion-row>
+                <ion-col class = "ion-text-center">
+                    <ion-button expand="block" type="button" (click) = "onSubmit()" class="ion-no-margin">Submit</ion-button>
+                 <!--  <ion-chip class = "unansweredqtn ">
+                    <ion-label class="btncoltxt" (click) = "onSubmit()">Submit</ion-label>
+                  </ion-chip>  -->
+                </ion-col> 
+              </ion-row>
+     </form> 
+    </ion-card-content>
+</ion-content>

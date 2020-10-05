@@ -1,0 +1,26 @@
+.fill {
+    object-fit: fill;
+  }
+
+  @media(max-width:1024px ) and (min-width:768px) {
+      .fill{
+          width:100%;
+          height: 200px;
+      }
+  }
+
+  .card-txt {
+    color: #FFFFFF;
+    font-family: 'fs_emericregular'; 
+}
+
+.upload {
+    background-color: #7f00ff;
+    color: white;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    padding-top: 1rem;
+    font-size: 2rem;
+}
+

@@ -1,0 +1,41 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+ion-item {
+    --background: transperent;
+}
+
+.btn-type{
+    background: #fff;
+    border: none;
+    font-size: 18px;
+    border-radius: 5rem;
+    width: 7rem;
+}
+
+.text-btn{
+    // background-image: linear-gradient(to right, #f12711, #f5af19);
+    background-image: linear-gradient(to right, #000000, #0f9b0f);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.status-selection {
+    --color: white;
+}
+
+/* ion-card-title, ion-card-subtitle, p {
+    color: white;
+}
+ */
+.my-custom-class {
+    --background: #222;
+    height: 60%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}

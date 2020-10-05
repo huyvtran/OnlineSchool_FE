@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lessons</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-card [class]="cssClass">
+    <img src="../../../assets/images/{{cssImage}}.png" />
+    <!-- <h2 class = "langtxt">{{subjectName}}</h2>  -->
+  </ion-card>
+
+  <h5 class="ion-text-center">Chapters</h5>
+  <ion-row>
+    <ion-col size = "12"> 
+      <ion-list>
+        <!-- [disabled] = "activityId === '1' && (item.videoStatus === 2 || item.videoStatus === 3 || item.videoStatus === 4)" -->
+        <ion-item *ngFor = "let item of lessons" 
+        (click) = "navigateToNextPage(item.CURSUBCLASSLESID, item.LESSIONID, item.LESSIONNAME)">
+          <ion-icon slot="end" name="close-circle" color = "danger" *ngIf = "item.videoStatus === 1"></ion-icon>
+          <ion-icon slot="end" name="caret-forward-circle" color = "primary" *ngIf = "item.videoStatus === 2"></ion-icon>
+          <ion-icon slot="end" name="time" color = "warning" *ngIf = "item.videoStatus === 3"></ion-icon>
+          <ion-icon slot="end" name="checkmark-circle" color = "success" *ngIf = "item.videoStatus === 4"></ion-icon>
+          <ion-label style="font-size: small;"> {{item.LESSIONNAME}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col> 
+  </ion-row>
+
+  <ion-row *ngIf = "displayMessage">
+    <ion-col size = "12" class="ion-text-center">
+      <ion-text>
+        <h5>No Lessons to Display.</h5>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

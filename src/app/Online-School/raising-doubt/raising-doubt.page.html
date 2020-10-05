@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Student Doubts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-row>
+      <ion-col size = "12">
+        <ion-card color = "success">
+          <ion-card-content class="ion-text-center">
+            <ion-card-title>
+              <span class= "card-txt">{{subjectName}}</span>  
+            </ion-card-title>
+  
+            <ion-card-subtitle>
+              <span class= "card-txt">{{lessonId}}. {{lessonName}}</span>  
+            </ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+     <!-- <ion-row class= "ion-text-center">  
+      <ion-col class = "ion-text-center">
+      <ion-chip class = "rdcolor" selected>
+        <span class = "imgcls"> <img src="../../../assets/images/question.png"/></span>
+      <ion-label   [color]="buttonColor" class="btncoltxt" (click) = "btnActivate1('1');loaddata('1')">Raising Doubt</ion-label>
+      </ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row class= "ion-text-center">  
+      <ion-col class = "ion-text-center">
+    <ion-chip class = "unansweredqtn"   [color]="buttonColor" >
+      <span class = "imgcls">  <img src="../../../assets/images/conversation.png"/> </span>
+      <ion-label   [color]="buttonColor" class="btncoltxt" (click) = "btnActivate1('2');loaddata('2')">Un answered qtn</ion-label>
+    </ion-chip>
+    <ion-chip class = "allanswerqtn">
+        <span class = "imgcls"> <img src="../../../assets/images/qa.png"/></span>  
+        <ion-label class="btncoltxt" (click) = "loaddata('3')">All answered qtn</ion-label>
+    </ion-chip>
+    </ion-col>
+   </ion-row> -->
+
+  <!--  <ion-row class="ion-text-center">
+     <ion-col>
+      <ion-button   [color]="buttonColor2"  (click) = "btnActivate1('3');loaddata('1')">Raising Doubt</ion-button> 
+     </ion-col>
+   </ion-row>
+ <ion-row>
+   <ion-col>
+    <ion-button   [color]="buttonColor"  (click) = "btnActivate1('1');loaddata('2')">Un answered qtn</ion-button> 
+    <ion-button    [color]="buttonColor1" (click) = "btnActivate1('2');loaddata('3')" >All answered qtn</ion-button> 
+   </ion-col>
+ </ion-row> -->
+
+  <ion-segment (ionChange)="loaddata($event)" mode = "ios" value="1" color = "primary">
+    <ion-segment-button value="1">
+      <ion-label>Raising Doubt</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Un Answered</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label>Answered</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <form [formGroup] = "RaisingdoubtsForm" autocomplete="off">
+   <div *ngIf = "hide1 || hide2">
+
+    <ion-item>
+      <ion-label>From Date</ion-label>
+      <ion-datetime  display-format="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [max] = "maxDate" formControlName = "fromdate" placeholder="Select Date" (ionChange) = "loadDate()"></ion-datetime>
+    </ion-item> 
+    <ion-item>
+      <ion-label>To Date</ion-label>
+      <ion-datetime  display-format="DD-MM-YYYY" formControlName = "todate" [max] = "maxDate"  placeholder="Select Date" (ionChange) = "loadDate()"></ion-datetime>
+    </ion-item> 
+  
+    <ion-row>
+      <ion-col size = "12" class="ion-text-center">
+        <mat-radio-group formControlName = "doubtfor" color = "primary">
+          <mat-radio-button class="mr-3" *ngFor= "let status of statusList;"
+          [value]= "status.id">
+            {{status.status}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >  
+      <ion-col *ngIf = "hide2" class="ion-text-center">  
+        <ion-button color="secondary" fill = "outline" (click) = "getDetails()" [disabled] = "datemessage">Get Details</ion-button> 
+      </ion-col> 
+      <ion-col *ngIf = "hide1" class="ion-text-center">   
+        <ion-button color="secondary" fill = "outline" (click) = "getAnswerData()" [disabled] = "datemessage">Get Details</ion-button> 
+      </ion-col> 
+     </ion-row>
+     <div *ngIf = "datemessage" class = "errorMsg1">
+      To date should  be later than From date
+    </div>
+     <ion-row>
+      <ion-col size = "12">
+        <h3 style="text-align: center; color: darkgrey" *ngIf = "nodata || nodatanswers">No Records to show</h3>
+      </ion-col>
+    </ion-row>
+    <ion-toolbar *ngIf = "doubtstatus">
+      <ion-searchbar (ionInput) = "Filterdata($event)"></ion-searchbar>
+    </ion-toolbar>
+    <ion-toolbar *ngIf = "answerstatus">
+      <ion-searchbar (ionInput) = "Filterdata1($event)"></ion-searchbar>
+    </ion-toolbar>
+  </div>
+
+    <ion-card *ngIf = "hide">
+      <ion-card-content *ngIf = "hide">
+          <p class = "errorMsg">Raising Doubts</p>
+        <ion-item>
+          <ion-label position="stacked">Ask me question ?</ion-label>
+          <ion-textarea rows="5" cols="20" formControlName = "doubt"></ion-textarea>
+        </ion-item>
+        <ion-row>  
+          <ion-col size = "12" class = "ion-text-center">   
+            <ion-button fill = "outline" color = "dark" (click) = "onSubmit()">
+              Post
+            </ion-button>
+          </ion-col> 
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+      <ion-card *ngIf = "doubtstatus">
+      <ion-card-content>
+        <p class = "errorMsg">Un answered qtns</p>
+        <ion-item *ngFor = "let status of doubtdata">
+          {{status.DOUBT}}
+        
+        </ion-item>
+      </ion-card-content>
+    </ion-card> 
+ <!--    <ion-card *ngIf = "this.hide1 === true">  -->
+      <ion-card-content *ngIf = "hide1">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor = "let status of answerdata">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{status.DOUBT}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+             <ion-label> {{status.ANSWER}} </ion-label>
+          </mat-expansion-panel>
+          </mat-accordion>
+     </ion-card-content>
+  <!--   </ion-card> -->
+  </form>
+  </ion-card-content>
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar slot="bottom">
+     
+      <ion-tab-button  (click) = "loadlisteningpage()">
+        <ion-icon color = "primary" name="play-circle-outline"></ion-icon>
+        <ion-label>Listening</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadreadinglessonpage()">
+        <ion-icon color = "primary" name="book-outline"></ion-icon>
+        <ion-label>Reading</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "navigatetohome()">
+        <ion-img src="../../../assets/images/medha.svg"></ion-img>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon name="help-outline" color = "primary"> </ion-icon>
+        <ion-label>Raising Doubt</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="loadstudentassignment()">
+        <ion-icon name="document-text-outline" color = "primary"></ion-icon>
+        <ion-label>Assignment</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> 
+ </ion-toolbar>

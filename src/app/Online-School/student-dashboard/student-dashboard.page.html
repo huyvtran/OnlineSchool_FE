@@ -1,0 +1,22 @@
+
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Student Overview</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <google-chart #chart
+  [title]="title"
+  [type]="type"
+  [data]="loadData"
+  [options]="options"
+  [width]="width"
+  [columns]="columnNames"
+  [height]="height">
+</google-chart>
+</ion-content>

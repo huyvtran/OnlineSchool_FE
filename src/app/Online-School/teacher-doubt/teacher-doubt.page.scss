@@ -1,0 +1,101 @@
+.txtbutton{
+background:transparent linear-gradient(228deg, #3CA55C 0%, #B5AC49 100%) 0% 0% no-repeat padding-box;
+border-radius: 10px;
+opacity: 1;
+}
+.doubts{
+background: transparent linear-gradient(156deg, #348F50 0%, #56B4D3 100%) 0% 0% no-repeat padding-box;
+border-radius: 10px;
+opacity: 1;
+}
+.assignment {
+background: transparent linear-gradient(218deg, #02AAB0 0%, #00CDAC 100%) 0% 0% no-repeat padding-box;
+border-radius: 10px;
+opacity: 1;
+}
+.report {
+background: transparent linear-gradient(180deg, #16A085 0%, #E1F5C4 100%) 0% 0% no-repeat padding-box;
+border-radius: 10px;
+opacity: 1;
+}
+
+.title{
+text-align: left;
+font: SemiBold 20px/30px Poppins;
+letter-spacing: 0px;
+color: #FFFFFF;
+text-shadow: 0px 3px 6px #090909;
+opacity: 1;
+text-align: center;
+}
+img{
+margin-left: 1rem
+}
+.rdcolor {
+background: transparent linear-gradient(135deg, #00467F 0%, #A5CC82 100%) 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #090909;
+border-radius: 20px;
+opacity: 1;
+}
+.unansweredqtn {
+background: #F7681C;
+box-shadow: 0px 3px 6px #090909;
+border-radius: 20px;
+opacity: 1;
+
+}
+.allanswerqtn{
+background: #19547b;
+box-shadow: 0px 3px 6px #090909;
+border-radius: 20px;
+opacity: 1;
+}
+.btncoltxt{
+text-align: left;
+// font: Bold 9px/10px Georgia;
+// font: Bold 12 Georgia;
+letter-spacing: 0px;
+color: #FFFFFF;
+text-shadow: 0px 3px 6px #090909;
+opacity: 1;
+}
+.imgcls{
+margin-left: -20px;
+}
+.center{
+text-align:center;
+}
+.errorMsg {
+color:  #2B32B2;
+font-size: 12px;
+text-align: center
+}
+.errorMsg1 {
+color: red;
+text-align: center
+}
+.post{
+width: 5rem;
+background: transparent linear-gradient(133deg, #1488CC 0%, #2B32B2 100%) 0% 0% no-repeat padding-box;
+text-align: center;
+}
+.postbtntxt{
+font-size: 13px;
+color: #FFFFFF;
+text-align: center;
+}
+.radio {
+margin-top: 1rem;
+margin-left: 1rem;
+}
+
+.card-txt {
+    color: #FFFFFF;
+    font-family: 'fs_emericregular'; 
+}
+  ion-chip:hover {
+    border: 3px solid #808080 ;
+  }
+
+
+ 

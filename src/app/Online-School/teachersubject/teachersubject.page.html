@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Teacher Subjects</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="teacherSubjectForm" autocomplete="off" (ngSubmit)="saveTeacherSubject()">
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Institue Type</ion-label>
+        <mat-select class="custom-select" required>
+          <mat-option *ngFor = "let item of InstitueData" [value] = "item.INSTTYPEID" (click)="institueName(item.INSTTYPEID)" >
+            {{item.INSTITUTETYPE}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Institue</ion-label>
+        <mat-select class="custom-select" required>
+          <mat-option *ngFor = "let item of InstitueNameData" [value] = "item.INSTID" (click)="getTeacherByInstitue(item.INSTID); getCirriculumData(item.INSTID)" >
+            {{item.INSTITUTIOINNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Teacher</ion-label>
+        <mat-select class="custom-select" formControlName="TEACHERID" required>
+          <mat-option *ngFor = "let item of teacherNameData" [value] = "item.TEACHERID">
+            {{item.TEACHERNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Cirriculum</ion-label>
+        <mat-select class="custom-select" formControlName="CURRID" required>
+          <mat-option *ngFor = "let item of cirriclumInstitueData" [value] = "item.CURRID" (click)="getClassFromCirriculum(item.INSTCURID); getSubjectBySection(item.CURRID)" >
+            {{item.CURRICULUMNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Class </ion-label>
+        <mat-select class="custom-select" formControlName="CLASSID" required>
+          <mat-option *ngFor = "let item of classCirriculumData" [value] = "item.CLASSID" (click)="getSectionByClass(item.INSTCURCLASSID)" >
+            {{item.CLASSNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Section </ion-label>
+        <mat-select class="custom-select" formControlName="SECTIONID" required>
+          <mat-option *ngFor = "let item of sectionByClassData" [value] = "item.SECTIONID" (click) = "patchToTeachersForm(item.INSTCURCLASSSECID)">
+            {{item.SECTIONNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Subject </ion-label>
+        <mat-select multiple class="custom-select" formControlName="CURSUBID" required>
+          <mat-option *ngFor = "let item of subjectBySectionData" [value] = "item.CURSUBID">
+            {{item.SUBJECTNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size = "6">
+        <ion-button expand="block" type="submit" color="dark" fill = "outline" [disabled] = "!teacherSubjectForm.valid">Save</ion-button>
+      </ion-col>
+      <ion-col size = "6">
+        <ion-button expand="block" fill = "outline" color="danger">Reset</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

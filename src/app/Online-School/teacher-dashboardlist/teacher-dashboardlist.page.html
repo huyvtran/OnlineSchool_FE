@@ -1,0 +1,79 @@
+<ion-header translucent>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Teacher </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+   <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()"> 
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your  Teacher</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Teacher" formControlName="teacherId">
+          <mat-option *ngFor="let item of teacher"
+            [value]="item.TEACHERID" (click)="getCurriculumData(item.MOBILENO)">
+            {{item.FIRSTNAME}} {{item.LASTNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your Currculim</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Teacher" formControlName="curid">
+          <mat-option *ngFor="let item of currculims"
+            [value]="item.CURRID" (click)="getClassesData(item.INSTCURID, item.TEACHERID)">
+            {{item.CURRICULUMNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your Class</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Class" formControlName="classid">
+          <mat-option *ngFor="let item of classes"
+            [value]="item.CLASSID"  (click)="getSectionsData(item.INSTCURCLASSID, item.TEACHERID)">
+            {{item.CLASSNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your Section</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Section" formControlName="secid">
+          <mat-option *ngFor="let item of sections" 
+            [value]="item.INSTCURCLASSSECID">
+            {{item.SECTIONNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size = "12" class="ion-text-center">
+        <mat-radio-group  color = "primary" formControlName="type">
+          <mat-radio-button class="mr-3" *ngFor= "let status of statusList;"
+          [value]= "status.id">
+            {{status.status}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </ion-col>
+    </ion-row>
+<br>
+    <ion-row>
+      <ion-col size='12' class="ion-text-end">
+        <ion-button fill="outline" type="submit" [disabled]="!this.curriculumForm.valid"  color="dark">
+          Next
+        </ion-button>
+      </ion-col>
+    </ion-row>
+   </form> 
+</ion-content>

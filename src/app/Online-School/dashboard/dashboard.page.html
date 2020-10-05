@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+       <ion-col col-6>
+         <ion-card  padding class="data2" (click) = "navigatetoprincipalcurriculum()">
+           <ion-img src="../../../assets/images/teaching.png"></ion-img>
+           <ion-card-subtitle class="btn-txt">Overview</ion-card-subtitle>
+         </ion-card>
+       </ion-col>
+      <ion-col col-6>
+  
+       </ion-col>
+      
+     </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card text-center padding class="data" (click) = "navigatetostudentdashboardlist()">
+          <ion-img src="../../../assets/images/boy.png"></ion-img>
+          <ion-card-subtitle class="btn-txt">Student</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-card text-center padding class="data1" (click) = "navigatetoteacherdashboard()">
+          <ion-img src="../../../assets/images/doubts_clarification.png"></ion-img>
+          <ion-card-subtitle class="btn-txt">Teacher</ion-card-subtitle>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  
+   
+  </ion-grid>
+</ion-content>

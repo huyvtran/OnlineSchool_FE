@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form autocomplete = "off" [formGroup] = "ProfileForm">
+    <div class="ion-padding ion-text-center avatar-div">
+      <img src="../../../assets/images/boy.png" class="avatar" />
+      <br/>
+      <h5 color = "tertiary">{{userName}}</h5>
+    </div>
+    <div *ngIf = "this.accesslevelid === '1' &&  this.groupid === '3'">
+  <!-- <ion-item>
+    <ion-label position="floating" class="textclass">Student Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input 
+    type="text"
+    required 
+    formControlName = "studentname"
+    readonly
+    >
+  </ion-input>
+  </ion-item> -->
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="textclass">Roll No <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input 
+    type="text"
+    required 
+    formControlName = "rollno"
+    readonly
+    >
+  </ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="textclass">Institue Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input 
+    type="text"
+    required 
+    formControlName = "institutename"
+    readonly
+    >
+  </ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="textclass">Class <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input 
+    type="text"
+    required 
+    formControlName = "class"
+    readonly
+    >
+  </ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-label position="floating" class="textclass">Section <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input 
+    type="text"
+    required 
+    formControlName = "section"
+    readonly
+    >
+  </ion-input>
+  </ion-item>
+</div>
+<!-- </ion-list> -->
+<div *ngIf = "this.accesslevelid === '1' &&  this.groupid === '2'">
+
+
+<!-- <ion-item>
+  <ion-label position="floating" class="textclass">Teacher Name <ion-text color="danger">*</ion-text></ion-label>
+  <ion-input 
+  type="text"
+  required 
+  formControlName = "teachername"
+  readonly
+  >
+</ion-input>
+</ion-item> -->
+<br>
+<ion-item>
+  <ion-label position="floating" class="textclass">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
+  <ion-input 
+  type="text"
+  required 
+  formControlName = "mobilenumber"
+  readonly
+  >
+</ion-input>
+</ion-item> 
+<br>
+<ion-item>
+  <ion-label position="floating" class="textclass">Institute Name <ion-text color="danger">*</ion-text></ion-label>
+  <ion-input 
+  type="text"
+  required 
+  formControlName = "teacherInstitue"
+  readonly
+  >
+</ion-input>
+</ion-item>
+</div>
+</form>
+</ion-content>

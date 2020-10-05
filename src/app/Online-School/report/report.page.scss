@@ -1,0 +1,95 @@
+.rdcolor {
+    background: transparent linear-gradient(156deg, #00B09B 0%, #96C93D 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #090909;
+    border-radius: 0px 15px;
+    opacity: 1;
+    top: 32px;
+    left: 8px;
+    width: 343px;
+    height: 94px;
+}
+
+.doutcolor {
+background: transparent linear-gradient(138deg, #CAC531 0%, #F3F9A7 100%) 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #090909;
+border-radius: 0px 15px;
+opacity: 1;
+top: 49px;
+left: 9px;
+width: 343px;
+height: 94px;
+}
+.reportcolor{
+
+top: 59px;
+left: 9px;
+width: 343px;
+height: 94px;
+background: transparent linear-gradient(180deg, #00F260 0%, #0575E6 100%) 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #090909;
+border-radius: 0px 15px;
+opacity: 1;
+}
+
+.imgcls{
+margin-left: -20px;
+}
+
+.btncoltxt{
+text-align: center;
+font: Bold 22px/25px Georgia;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+top: 180px;
+left: 94px;
+width: 173px;
+height: 25px;
+margin-left: 68px;
+}
+
+.btncoltxtreport{
+top: 412px;
+left: 86px;
+width: 189px;
+height: 25px;
+text-align: center;
+font: Bold 22px/25px Georgia;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+margin-left: 4rem;
+}
+
+.btncoltxtdobut{
+
+text-align: center;
+font: Bold 22px/25px Georgia;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+/* margin-left: 4rem; */
+margin-left: 3rem;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-header-cell {
+  background-color: #fa4f05;
+  color: white;
+}
+  
+
+.horizontal_line {
+    border:none;
+    border-top:1px dotted gray;
+    color:#fff;
+    background-color:#fff;
+    height:1px;
+  }

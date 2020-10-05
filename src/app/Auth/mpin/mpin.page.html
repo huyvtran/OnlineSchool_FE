@@ -1,0 +1,87 @@
+
+
+<ion-content>
+  <form autocomplete = "off"  [formGroup] = "mpinForm" #formDirective = "ngForm" (ngSubmit)= "onSubmit()">
+  <ion-card-content>
+    <div class="container">
+    <div class="row ion-text-center">
+      <div class="col-sm-12">
+        <img src="../../../assets/images/welcome-user.png"/>
+      </div>
+    </div>
+    <div class="row ion-text-center">
+      <div class="col-sm-12">
+        <h5 *ngIf=" username !== undefined " > {{userName}} </h5>
+      </div>
+    </div>
+    <p class="errorMsg" *ngIf= "isAuthenticated === false">{{message}}</p>
+  <h2 class="ion-text-center" style = "margin-top: 2rem;">Enter mPIN</h2>
+  <ion-row class="ion-text-center">
+    <ion-col size = "2"></ion-col>
+    <ion-col size = "2">
+        <ion-input  #otp1 
+        type="tel"
+        style="-webkit-text-security:disc; font-size: 20px;"
+        required 
+        maxlength = "1" 
+        formControlName = "otp1"
+        autofocus="true" 
+       (ionChange)="otpcontroller($event,otp2,'')"
+       >
+        </ion-input>
+    </ion-col>
+    <ion-col size = "2">
+        <ion-input #otp2 
+        type="tel"
+        style="-webkit-text-security:disc;font-size: 20px;"
+        required 
+        maxlength = "1" 
+        formControlName = "otp2"
+        autofocus="true" 
+        (ionChange)="otpcontroller($event,otp3,otp1)"
+        >
+      </ion-input>
+    </ion-col>
+    <ion-col size = "2">
+        <ion-input #otp3
+        required 
+        type="tel"
+        style="-webkit-text-security:disc; font-size: 20px;"
+        maxlength = "1" 
+        formControlName = "otp3"
+        autofocus="true" 
+        (ionChange)="otpcontroller($event,otp4,otp2)"
+       >
+        </ion-input>
+    </ion-col>
+    <ion-col size = "2" >
+        <ion-input #otp4 
+        required 
+        type="tel"
+        style="-webkit-text-security:disc; font-size: 20px;"
+        maxlength = "1" 
+        minlength = "1"
+        autofocus="true" 
+        formControlName = "otp4"
+        (ionChange)="onSubmit(); otpcontroller($event, '',otp3);"
+        >
+        <!-- (keypress) = "onSubmit()" -->
+        </ion-input>
+    </ion-col>
+    <ion-col size = "2"></ion-col>
+  </ion-row>
+ <br> 
+ <a [routerLink]="['/auth', 'login']" 
+ style="float: right;">
+ Login with User ID
+</a>
+
+<a [routerLink]="['/auth', 'forgot-password']" 
+ style="float: left;">
+ Forgot Password
+</a>
+  <!-- <ion-button class = "submit-btn" expand="block"> <span class="submit-btn-txt" (click) = "onSubmit()">LOGIN</span></ion-button> -->
+</div>
+</ion-card-content>
+</form>
+</ion-content>

@@ -1,0 +1,183 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: 'fs_emericregular';
+    src: url(./assets/fonts/FSEmeric-Regular.otf) format("opentype");
+  }
+
+  @font-face {
+    font-family: 'glosa_romanroman';
+    src: url(./assets/fonts/Glosa-Roman.otf) format("opentype");
+  }
+
+  * {
+    font-family: 'fs_emericregular';
+}
+.ion-label{
+    font-family: 'fs_emericregular';
+    font-size: 4px;
+}
+
+.headerfont {
+  font-family: 'glosa_romanroman';
+  font-size: 25px;
+}
+
+/* Subjects css */
+.sanskrit_reader{
+  background: transparent linear-gradient(180deg, #FDC830, #F37335) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.sanskrit_nondetail_1{
+  background: transparent linear-gradient(180deg, #FDC830, #F37335) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.sanskrit_nondetail_2{
+  background: transparent linear-gradient(180deg, #FDC830, #F37335) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.telugu_reader{
+  background: transparent linear-gradient(145deg, #E65C00 0%, #F9D423 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.telugu_nondetail{
+  background: transparent linear-gradient(145deg, #E65C00 0%, #F9D423 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.hindi_reader{
+  background: transparent linear-gradient(180deg, #43cea2   0%,  #185a9d 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.hindi_nondetail_1{
+  background: transparent linear-gradient(180deg, #43cea2   0%,  #185a9d 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.hindi_nondetail_2{
+  background: transparent linear-gradient(180deg, #43cea2   0%,  #185a9d 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.hindi_nondetail_3{
+  background: transparent linear-gradient(180deg, #43cea2   0%,  #185a9d 100%) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+.english_reader{
+  background: linear-gradient(to left, #f12711, #f5af19);
+}
+.english_nondetail{
+  background: linear-gradient(to left, #f12711, #f5af19);
+}
+.maths{
+  background: linear-gradient(to right, #9d50bb, #6e48aa);
+}
+.science {
+  background: linear-gradient(to left, #7f7fd5, #86a8e7);
+}
+
+.social_geography{
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+}
+.social_history{
+  background: linear-gradient(to right, #f953c6, #b91d73);
+}
+.social_civics{
+  background: linear-gradient(to right, #f7971e, #ffd200);
+}
+.social_economics{
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+}
+.computers{
+  background: transparent linear-gradient(180deg, #ff0099, #493240) 0% 0% no-repeat padding-box;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+// yaswanth changes
+
+.headerfont {
+  font-family: 'glosa_romanroman';
+  font-size: 25px;
+  color: #56565B;
+}
+.toolbarcolor {
+  --background: linear-gradient(315deg, #FEC43B 0.04%, #FFD266 100%); 
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100vw;
+}
+
+.submit-btn-txt {
+  width: 120px;
+  color: #56565B;
+  font-size: 16px;
+  text-align: center;
+  font-family: 'fs_emericregular';
+}
+.submit-btn {
+
+  //height: 36px;
+  //width: 107.76px;
+  //border-radius: 4px;
+  --background: linear-gradient(315deg, #FEC43B 0.04%, #FFD266 100%); 
+
+}
+
+/* .my-custom-class .alert-wrapper {
+  //background: rgb(207, 174, 174);
+  --max-width: 100%;
+} */
+.my-custom-modal-css .modal-wrapper {
+  height: 50%;
+  width: 80%;
+  top: 20%;
+  padding: 10%;
+  position: absolute;
+  display: block;
+  border-radius: 2%;
+  }
+/* .my-custom-class {
+  position: absolute;
+  overflow: hidden;
+  width: 90vw;
+  height: 90vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 0;
+  box-shadow: 0 16px 20px rgba(0,0,0,.4);
+  background-color: #fafafa;
+} */

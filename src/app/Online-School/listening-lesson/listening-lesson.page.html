@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Listening Lesson</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup] = "lessonListeningForm" (ngSubmit) = "onSubmit()">
+
+    <ion-card formArrayName = "gridData" *ngFor = "let item of videoDetails; let i = index">
+      <!-- <video [src]="item.VIDEOAUDIOPATH" accept="video/*" *ngIf="url" height="100%" width="100%" controls></video> -->
+
+      <video accept="video/*" height="100%" width="100%" controls controlsList="nodownload">
+        <source label = "full HD" [src]="item.VIDEOAUDIOPATH" />
+      </video>
+
+      <ion-item>
+        <ion-avatar slot="start" [class] = "cssClass">
+          <ion-img src = "../../../assets/images/{{cssImage}}.png"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h1>{{subjectName}}</h1>
+          <p>{{lessonName}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf = "item.TEACHERREMARKS.length > 0">
+        <ion-text>
+          <p>{{item.TEACHERREMARKS}}</p>
+        </ion-text>
+      </ion-item>
+
+      <ion-item lines="none" [formGroupName]="i">
+        <!-- <ion-buttons slot="start">
+          <ion-button class="status-selection" fill = "clear" size = "small" (click) = "selectStatus('3')">
+            <ion-icon slot="start" name="checkmark-outline" *ngIf = "inProgressStatus"></ion-icon>
+            In Progress
+          </ion-button>
+          <ion-button class="status-selection" fill = "clear" size = "small" (click) = "selectStatus('4')">
+            <ion-icon slot="start" name="checkmark-outline" *ngIf = "completedStatus"></ion-icon>
+            Completed
+          </ion-button>
+        </ion-buttons> -->
+        <!-- <mat-select formControlName="listeningStatus" placeholder="Products" required>
+          <mat-option *ngFor="let status of statusList " [value]="status.id">
+            {{status.name}}
+          </mat-option>
+        </mat-select> -->
+        <ion-row>
+          <ion-col size = "12">
+            <mat-radio-group formControlName="LISTENINGSTATUS" aria-label="Status" color="primary">
+              <mat-radio-button *ngFor = "let status of statusList" [value] = "status.id"
+               (click) = "selectStatus(status.id, item.VIDEOID)">
+               {{status.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-badge *ngIf = "item.LISTENINGSTATUS === null" color="success" slot="start">New</ion-badge>
+        <ion-buttons slot="end">
+          <ion-button size = "small" color = "primary" fill="clear" (click) = "onSubmit()">
+            SUBMIT
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-card>
+
+    <ion-card [class] = "cssClass" style="height: 30vh; padding-top: 3.5rem;" *ngIf = "videoDetails.length === 0">
+      <ion-card-header>
+        <ion-card-subtitle>{{lessonName}}</ion-card-subtitle>
+        <ion-card-title>{{subjectName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-text-center">
+        <ion-text class="ion-text-center">
+          <h1 style="color: white">Video not uploaded yet.</h1>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+  </form>
+</ion-content>
+<ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar slot="bottom">
+     
+      <ion-tab-button  (click) = "loadlisteningpage()">
+        <ion-icon color = "primary" name="play-circle-outline"></ion-icon>
+        <ion-label>Listening</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click) = "loadreadinglessonpage()">
+        <ion-icon color = "primary" name="book-outline"></ion-icon>
+        <ion-label>Reading</ion-label>
+      </ion-tab-button>
+      
+      <ion-tab-button (click) = "navigatetohome()">
+        <ion-img src="../../../assets/images/medha.svg"></ion-img>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click) = "loadraisingdoubtpage()">
+        <ion-icon name="help-outline" color = "primary"> </ion-icon>
+        <ion-label>Raising Doubt</ion-label>
+      </ion-tab-button>
+     
+      <ion-tab-button (click) = "loadstudentassignment()">
+        <ion-icon name="document-text-outline" color = "primary"></ion-icon>
+        <ion-label>Assignment</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> 
+ </ion-toolbar>

@@ -1,0 +1,71 @@
+
+
+<ion-content>
+  <body>
+    <form [formGroup] = "loginForm" autocomplete="off" #formDirective = "ngForm" (ngSubmit) = "onSubmit()">
+      <!-- <ion-card-content> -->
+        <div class="container">
+          <div class="row ion-text-center">
+            <div class="col-sm-12">
+              <img src="../../../assets/images/welcome-user.png"/>
+            </div>
+          </div>
+          <div class="row ion-text-center" *ngIf=" username === undefined ">
+            <div class="col-sm-12">
+              <h5 *ngIf=" username === undefined " > {{userName}} </h5>
+            </div>
+          </div>
+          <p class="errorMsg" *ngIf= "isAuthenticated === false">{{message}}</p>
+          <ion-item>
+            <ion-label position="floating"  class="textclass">Login ID<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input 
+            type="text"
+            formControlName="loginid"
+            minlength="10"
+            maxlength="15"
+            required
+            ></ion-input>
+          </ion-item>
+          <div *ngIf= "this.loginForm.controls['loginid'].touched && this.loginForm.controls['loginid'].invalid" class="text-danger">
+            <div *ngIf="this.loginForm.controls['loginid'].errors.required">
+              <ion-icon name="ios-information-circle-outline"></ion-icon> Login ID is required
+            </div>
+          </div>
+          
+          <ion-item>
+            <ion-label position="floating" class="textclass">Password <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input 
+            type="password"
+            required
+            formControlName="password"
+            ></ion-input>
+            
+          </ion-item>
+          <div *ngIf= "this.loginForm.controls['password'].touched && this.loginForm.controls['password'].invalid" class="text-danger">
+            <div *ngIf="this.loginForm.controls['password'].errors.required">
+              <ion-icon name="ios-information-circle-outline"></ion-icon> Password is required
+          </div>
+        </div> 
+          <br>
+          <a [routerLink]="['/auth', 'mpin']" 
+          style="float: right;">
+          Login with mPIN
+        </a>
+
+        <a [routerLink]="['/auth', 'forgot-password']" 
+          style="float: left;">
+          Forgot Password
+        </a>
+          <br>
+        <div class="ion-padding">
+          <!-- <ion-button expand="block" type="submit" class="ion-no-margin submit-btn">
+            <span class="submit-btn-txt">LOGIN</span>
+          </ion-button> -->
+          <ion-button fill = "outline" color = "dark" expand="block" type="submit">
+            LOGIN
+          </ion-button>
+        </div>
+      </div>
+    </form>
+  </body>
+</ion-content>

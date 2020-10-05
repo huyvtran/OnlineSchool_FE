@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Assignment</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content class="scroller">
+  <ion-card-content  class="scroller">
+    <ion-row>
+      <ion-col size = "12">
+        <ion-card color = "success">
+          <ion-card-content class="ion-text-center">
+            <ion-card-title>
+              <span class= "card-txt">{{subjectName}}</span>  
+            </ion-card-title>
+            <ion-card-subtitle>
+              <span class= "card-txt">{{lessonId}}. {{lessonName}}</span>  
+            </ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col class="ion-text-center">
+        <ion-button color="primary" fill="outline" (click)="navigateaddassignment()">
+          <ion-icon name="add-outline"></ion-icon>&nbsp; Add Assignment
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list-header class="ion-text-center">
+          <ion-col size="2">
+            <ion-label>Sr.No</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Date</ion-label>
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>Assignment Title</ion-label>
+          </ion-col>
+        </ion-list-header>
+        <ion-list *ngFor="let item of assignment let i = index" class="ion-text-center">
+          <ion-list-header>
+            <ion-col size="2">
+              <ion-label> {{i+1}}</ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-label> {{item.CREATEDDATE}}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="ion-text-center"> {{item.TITLE}}</ion-label>
+            </ion-col>
+          </ion-list-header>
+
+          <ion-button  color="dark" [disabled]="item.ASSIGNMENTSTATUS !== 1" size="small" fill="outline" slot="end"
+            (click)="navigateeditassignment(item.ASSIGNMENTID)">
+            <ion-icon slot="end" name="create-outline"></ion-icon> Edit
+          </ion-button>
+
+          <ion-button slot="end"  color="dark" size="small" fill="outline" (click)="navigateviewassignment(item.ASSIGNMENTID)">
+            <ion-icon slot="end" name="eye"></ion-icon> View
+          </ion-button>
+
+          <ion-button size="small" color="dark"  fill="outline" [disabled]="item.ASSIGNMENTSTATUS !== 1" slot="end"
+            (click)="navigatepostsubmit(item.ASSIGNMENTID,item.ASSIGNMENTSTATUS)">
+            <ion-icon slot="end" name="save-outline"></ion-icon> Save
+          </ion-button>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-content>
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="loadaddvideo()">
+        <ion-icon name="videocam-outline" color= "primary"></ion-icon>
+        <ion-label>Add Video</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadteacherpage()">
+        <ion-icon name="help-outline" color = "primary"> </ion-icon>
+        <ion-label>Clarify Doubts</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "navigatetohome()">
+        <ion-img src="../../../assets/images/medha.svg"></ion-img>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button >
+        <ion-icon name="document-text-outline" color = "primary"></ion-icon>
+        <ion-label>Assignment</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadReportPage()">
+        <ion-icon name="hourglass-outline" color = "primary"></ion-icon>
+        <ion-label>Reports</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> 
+ </ion-toolbar>

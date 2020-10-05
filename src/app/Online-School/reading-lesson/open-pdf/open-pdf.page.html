@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="end">
+      <ion-button (click) = "closeModal()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>open-pdf</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size = "12">
+        
+      </ion-col>
+    </ion-row>
+
+    
+  </ion-grid> -->
+  <pdf-viewer
+    [src]="pdfSrc"
+    [render-text]="true"
+    [page]="page"
+    [show-all]="true"
+    style="display: block;"
+  >
+  </pdf-viewer>
+</ion-content>

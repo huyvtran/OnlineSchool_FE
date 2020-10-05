@@ -1,0 +1,115 @@
+<ion-header translucent>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{this.profiledata}}</ion-title>
+    <!-- <ion-row>
+      <ion-col class="ion-padding ion-text-center">
+        <h5>{{this.profiledata}}</h5> 
+      </ion-col>
+    </ion-row> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="curriculumForm" (ngSubmit) = "onSubmit()">
+
+    <!-- <ion-row>
+      <ion-col size="12">
+        <h6>1) Select your curriculum</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" *ngFor = "let item of curriculumData; let i = index">
+        <ion-card id="curriculum{{i}}" class="ion-text-center" (click) = "getClassesForSelectedCurriculum(item.TEACHERID, item.CURRID, item.INSTCURID, i)">
+          <ion-card-content>
+            {{item.CURRICULUMNAME}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Select your curriculum</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Curriculum">
+          <mat-option *ngFor = "let item of curriculumData" (click) = "getClassesForSelectedCurriculum(item.TEACHERID, item.CURRID, item.INSTCURID, 0)" 
+           [value] = "item.CURRID">
+            {{item.CURRICULUMNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+
+    <br>
+
+    <!-- <ion-row *ngIf = "classData.length > 0">
+      <ion-col size="12">
+        <h6>2) Select your grade</h6>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" *ngFor = "let item of classData; let i = index">
+        <ion-card id="class{{i}}" class="ion-text-center" (click) = "getSectionsForSelectedClass(item.CLASSID, item.INSTCURCLASSID, i)">
+          <ion-card-content>
+            {{item.CLASSNAME}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Select your grade</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Grade">
+          <mat-option *ngFor = "let item of classData" (click) = "getSectionsForSelectedClass(item.CLASSID, item.INSTCURCLASSID, 0)"
+           [value] = "item.CLASSID">
+            {{item.CLASSNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+
+    <br>
+
+    <!-- <ion-row *ngIf = "sectionData.length > 0">
+      <ion-col size="12">
+        <h6>3) Select your Section</h6>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4" *ngFor = "let item of sectionData; let i = index">
+        <ion-card id="section{{i}}" class="ion-text-center" (click) = "getSectionHighlighted(item.INSTCURCLASSSECID, i)">
+          <ion-card-content>
+            {{item.SECTIONNAME}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Select your section</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Section">
+          <mat-option *ngFor = "let item of sectionData" (click) = "getSectionHighlighted(item.INSTCURCLASSSECID, 0)"
+           [value] = "item.SECTIONID">
+            {{item.SECTIONNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+
+    <br>
+
+    <ion-row>
+      <ion-col size='12' class="ion-text-end">
+        <ion-button fill="outline" type="submit" [disabled] = "!disablebutton" color="dark"> 
+          Next
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

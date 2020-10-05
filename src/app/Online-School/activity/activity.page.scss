@@ -1,0 +1,104 @@
+.teaching{
+    --background: linear-gradient(to right, #00b4db, #0083b0);
+    height: 5rem;
+ }
+ .doubts_clarification{
+    --background: linear-gradient(to right, #f83600, #fe8c00);
+    height: 5rem;
+ }
+ .assignment {
+    --background: linear-gradient(to right, #ec008c, #fc6767);
+    height: 5rem;
+ }
+ .reporting {
+    --background: linear-gradient(to right, #f7971e, #ffd200);
+    height: 5rem; 
+ }
+
+.lessons_listening{
+    --background: linear-gradient(to right, #00b4db, #0083b0);
+    height: 5rem;
+ }
+ .lessons_reading{
+   --background: linear-gradient(to right, #f83600, #fe8c00);
+    height: 5rem;
+ }
+ .raise_doubts {
+    --background: linear-gradient(to right, #ec008c, #fc6767);
+    height: 5rem;
+ }
+ .assignment_submission {
+   --background: linear-gradient(to right, #f7971e, #ffd200);
+    height: 5rem; 
+ }
+
+ .circle_1 {
+   height: 120px;
+   width: 120px;
+   border-radius: 100px;
+   background-color: blue;
+   position: absolute;
+   right: -45px;
+   bottom: 15px;
+   opacity: 0.2;
+ }
+ .circle_2 {
+   height: 120px;
+   width: 120px;
+   border-radius: 100px;
+   background-color: red;
+   position: absolute;
+   right: -45px;
+   bottom: 15px;
+   opacity: 0.2;
+ }
+ .circle_3 {
+   height: 120px;
+   width: 120px;
+   border-radius: 100px;
+   background-color: darkmagenta;
+   position: absolute;
+   right: -45px;
+   bottom: 15px;
+   opacity: 0.2;
+ }
+ .circle_4 {
+   height: 120px;
+   width: 120px;
+   border-radius: 100px;
+   background-color: darkgoldenrod;
+   position: absolute;
+   right: -45px;
+   bottom: 15px;
+   opacity: 0.2;
+ }
+
+ion-item {
+    --background: transperent;
+    --color: white;
+    padding-top: 1rem;
+}
+ 
+ .title{
+    // font: SemiBold 20px/30px Poppins;
+    font: SemiBold Poppins;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #090909;
+    opacity: 1;
+    text-align: center;
+ }
+
+ img{
+     margin-left: 1rem
+ }
+
+ ion-list {
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+ }
+ .headerfont {
+   font-family: 'glosa_romanroman';
+   font-size: 15px;
+   color: #56565B;
+ }

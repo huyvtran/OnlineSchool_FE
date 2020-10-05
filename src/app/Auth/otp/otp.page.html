@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>OTP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<form autocomplete = "off" [formGroup] = "otpForm" >
+  <ion-card-content style = "margin-top: 2rem;">
+    <h3>Verification...</h3>
+    <p>
+      We have sent a 4 digit OTP to your registered mobile number +91 {{mobileno}}. Please enter the OTP below to continue.
+    </p>
+    <ion-row  class="ion-text-center">
+      <ion-col size = "2"></ion-col>
+      <ion-col class="data">
+          <ion-input  #otp1 
+          type = "tel"
+          required 
+          maxlength = "1" 
+          minlength = "1"
+          autofocus="true" 
+          formControlName="otp1"
+          (ionChange)="otpcontroller($event,otp2,'')"
+          style="-webkit-text-security:disc; font-size: 20px;"
+         >
+          </ion-input>
+      </ion-col>
+      <ion-col class="data">
+          <ion-input #otp2 
+          required 
+          type = "tel"
+          maxlength = "1" 
+          minlength = "1"
+          autofocus="true" 
+          formControlName="otp2"
+          (ionChange)="otpcontroller($event,otp3,otp1)"
+          style="-webkit-text-security:disc; font-size: 20px;"
+          >
+        </ion-input>
+      </ion-col>
+      <ion-col class="data">
+          <ion-input #otp3
+          required 
+          type = "tel"
+          maxlength = "1" 
+          minlength = "1"
+          autofocus="true" 
+          formControlName="otp3"
+          (ionChange)="otpcontroller($event,otp4,otp2)"
+          style="-webkit-text-security:disc; font-size: 20px;"
+         >
+          </ion-input>
+      </ion-col>
+      <ion-col class="data">
+          <ion-input #otp4 
+          type = "tel"
+          required 
+          maxlength = "1" 
+          autofocus="true" 
+          formControlName="otp4"
+          (ionChange)="verifyOTP(); otpcontroller($event, '',otp3);"
+          style="-webkit-text-security:disc; font-size: 20px;"
+         >
+          </ion-input>
+      </ion-col>
+      <ion-col size = "2"></ion-col>
+    </ion-row>
+    <br>
+    <div class="ion-padding">
+      <ion-button color="tertiary" style="float:left" (click) = "verifyOTP()">Verify OTP</ion-button>
+      <ion-button color="tertiary" style="float:right" (click) = "resendOTP()">Resend OTP</ion-button>
+    <!--   <ion-button color="tertiary" style="float:left" (click) = "sendOTP()">Request OTP</ion-button> -->
+    </div>
+  </ion-card-content>
+</form>
+</ion-content>
+
+

@@ -1,0 +1,25 @@
+.container {
+    margin-top: 5rem;
+ }
+ .data {
+   //  width: 100%;
+    height: 47px;
+    margin:10px;
+    border-bottom: 1px solid black;
+   display: inline-block;
+}
+.errorMsg {
+   color: red;
+   font-size: 15px;
+   text-align: center
+ }
+ input[type=number] {
+   -webkit-text-security: disc;
+}
+ion-input {
+   width: 40px;
+   height: 47px;
+   margin:10px;
+   border-bottom: 1px solid black;
+  display: inline-block;
+}

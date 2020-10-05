@@ -1,0 +1,67 @@
+<ion-header translucent>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Overview </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()">  
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your curriculum</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Curriculum"  formControlName="classid">
+          <mat-option *ngFor="let item of classes"
+            [value]="item.CLASSID">
+            {{item.CLASSNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your grade</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Grade"    formControlName="curid">
+          <mat-option *ngFor="let item of currculims"
+            [value]="item.CURRID">
+            {{item.CURRICULUMNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12" class="ion-padding-horizontal">
+        <ion-label>Select your section</ion-label>
+        <mat-select class="custom-select custom-select-sm" placeholder="Section"   formControlName="secid">
+          <mat-option *ngFor="let item of sections" 
+            [value]="item.SECTIONID">
+            {{item.SECTIONNAME}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size = "12" class="ion-text-center">
+        <mat-radio-group  color = "primary" formControlName="type">
+          <mat-radio-button class="mr-3" *ngFor= "let status of statusList;"
+          [value]= "status.id">
+            {{status.status}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </ion-col>
+    </ion-row>
+<br>
+    <ion-row>
+      <ion-col size='12' class="ion-text-end">
+        <ion-button fill="outline" type="submit" color="dark">
+          Next
+        </ion-button>
+      </ion-col>
+    </ion-row>
+   </form> 
+</ion-content>

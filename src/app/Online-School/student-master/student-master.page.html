@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Student Master</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup] = "studentMasterForm"  (ngSubmit) = "saveStudentMaster()" autocomplete="off">
+   <!--  <ion-row>
+      <ion-col size = "12" class="ion-padding-horizontal">
+        <ion-label>Student</ion-label>
+        <mat-select class="custom-select wgtmsr" formControlName="salutation" placeholder="Student">
+          <mat-option *ngFor = "let item of salutationData" [value] = "item" >
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </ion-col>
+    </ion-row> -->
+  
+  <ion-row>
+    <ion-col size = "12" class="ion-padding-horizontal">
+      <ion-label>Salutation</ion-label>
+      <mat-select class="custom-select wgtmsr" formControlName="salutation"  placeholder="Salutation">
+        <mat-option *ngFor = "let item of salutationData" [value] = "item" >
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12" class="ion-text-center">
+      <mat-radio-group  class = "radio" color = "primary" formControlName = "gender">
+        <label class="mr-2">Gender :</label> 
+        <mat-radio-button *ngFor = "let item of genderData" class="mr-3" [value] = "item.id">
+          {{item.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Roll Number" formControlName="rollNo">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Age" formControlName="Age">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Mobile Number" formControlName="mobileNo">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="E-mail ID" formControlName="emailId">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Father Id" formControlName="fatherId">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12" class="ion-padding-horizontal">
+      <ion-label>Father Salutation</ion-label>
+      <mat-select class="custom-select wgtmsr" formControlName="fatherSalutation"  placeholder="Father Salutation">
+        <mat-option *ngFor = "let item of salutationData" [value] = "item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Father First Name" formControlName="fatherFirstName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Father Last Name" formControlName="fatherLastName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Father Mobile Number" formControlName="fatherMobileNo">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Mother Id" formControlName="motherId">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12" class="ion-padding-horizontal">
+      <ion-label>Mother Salutation</ion-label>
+      <mat-select class="custom-select wgtmsr" formControlName="motherSaluation"  placeholder="Mother Salutation">
+        <mat-option *ngFor = "let item of salutationData" [value] = "item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Mother First Name" formControlName="motherFirstName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Mother Last Name" formControlName="motherLastName">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "12">
+      <mat-form-field>
+        <input matInput placeholder="Mother Mobile Number" formControlName="motherMobileNo">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size = "6">
+      <ion-button expand="block" color="dark" fill = "outline" type = "submit" 
+     [disabled] = "disablesubmit" >Save</ion-button>
+    </ion-col>
+    <ion-col size = "6">
+      <ion-button expand="block" fill = "outline" color="danger" (click) = "studentResetForm()">Reset</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+</ion-content>

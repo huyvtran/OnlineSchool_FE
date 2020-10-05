@@ -1,0 +1,247 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Teacher Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col size = "12">
+      <ion-card color = "success">
+        <ion-card-content class="ion-text-center">
+          <ion-card-title>
+            <span class= "card-txt">{{subjectName}}</span>   
+          </ion-card-title>
+
+          <ion-card-subtitle>
+            <span class= "card-txt">{{lessonId}}. {{lessonName}}</span>   
+          </ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-segment (ionChange)="loaddata($event)" mode = "ios" value="1" color = "primary">
+    <ion-segment-button value="1">
+      <ion-label>Self</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Student</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <br>
+
+  <mat-accordion *ngIf = "showSelf">
+    <mat-expansion-panel hideToggle expanded = 'true'>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ion-text-justify">
+          Lesson Upload
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div *ngFor = "let item of lessonUploadData" class="ion-no-padding">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="d-flex">
+              <h5 style="font-size: medium;" class="ion-no-margin">{{subjectName}}</h5>
+              <ion-label *ngIf = "item.VIDEOSTATUS === 1" class="ml-auto" style="font-size: small;text-align: right;">
+                No Video
+                <ion-icon slot="end" name="close-circle" color = "danger"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.VIDEOSTATUS === 2" class="ml-auto" style="font-size: small;text-align: right;">
+                Not yet Started
+                <ion-icon slot="end" name="caret-forward-circle" color = "primary"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.VIDEOSTATUS === 3" class="ml-auto" style="font-size: small;text-align: right;">
+                In Progress
+                <ion-icon slot="end" name="time" color = "warning"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.VIDEOSTATUS === 4" class="ml-auto" style="font-size: small;text-align: right;">
+                Completed
+                <ion-icon slot="end" color = "success" name="checkmark-circle"></ion-icon>
+              </ion-label>
+            </div>
+            <ion-label style="margin-top: 0rem; font-size: small;">{{lessonName}}</ion-label>
+            <p style="font-size: smaller;color: gray;">{{item.month}} {{item.date}}, {{item.day}} {{item.time}}</p>
+            <hr class="horizontal_line ion-text-center">
+            <h5 style="font-size: medium;">{{item.VIDEOAUDIONAME}}</h5>
+            <p style="margin: 0rem;font-size: smaller;color: gray;" class="ion-text-justify">{{item.TEACHERREMARKS}}</p>
+          </div>
+        </div>
+        <hr color = "secondary">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <br *ngIf = "showSelf">
+
+  <mat-accordion *ngIf = "showSelf">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ion-text-justify">
+          Doubt Clarification
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div *ngFor = "let item of dobutClarificationData"  class="ion-no-padding">
+        <div class="row">
+          <div class="col-sm-12">
+            <div style="display: flex">
+              <h5 class="w-50" style="margin: 0rem;font-size: medium;">{{subjectName}}</h5>
+              <ion-label *ngIf = "item.DOUBTSTATUS === 1" class="w-50" style="margin: 0rem; font-size: small;text-align: right;">
+                New Doubt
+                <ion-icon slot="end" color = "primary" name="chatbubble"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.DOUBTSTATUS === 2" class="w-50" style="margin: 0rem; font-size: small;text-align: right;">
+                Clarified
+                <ion-icon slot="end" color = "success" name="checkmark-circle"></ion-icon>
+              </ion-label>
+            </div>
+            <ion-label style="margin-top: 0rem; font-size: small;">{{lessonName}}</ion-label>
+            <p style="font-size: smaller;color: gray;">{{item.month}} {{item.date}}, {{item.day}} {{item.time}}</p>
+            <hr class="horizontal_line ion-text-center">
+            <h5 style="font-size: medium;">{{item.DOUBT}}</h5>
+            <p style="margin: 0rem;font-size: smaller;color: gray;" class="ion-text-justify">{{item.ANSWER}}</p>
+          </div>
+        </div>
+        <hr color = "secondary">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <br *ngIf = "showSelf">
+
+  <mat-accordion *ngIf = "showSelf">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="ion-text-justify">
+          Assignment
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div *ngFor = "let item of dobutClarificationData"  class="ion-no-padding">
+        <div class="row">
+          <div class="col-sm-12">
+            <div style="display: flex">
+              <h5 class="w-50" style="margin: 0rem;font-size: medium;">{{subjectName}}</h5>
+              <ion-label *ngIf = "item.ASSIGNMENTSTATUS === 1" class="ml-auto" style="font-size: small;text-align: right;">
+                No Assignment
+                <ion-icon slot="end" name="close-circle" color = "danger"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.ASSIGNMENTSTATUS === 2" class="ml-auto" style="font-size: small;text-align: right;">
+                Not yet Started
+                <ion-icon slot="end" name="chatbubble" color = "primary"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.ASSIGNMENTSTATUS === 3" class="ml-auto" style="font-size: small;text-align: right;">
+                In Progress
+                <ion-icon slot="end" name="time" color = "warning"></ion-icon>
+              </ion-label>
+              <ion-label *ngIf = "item.ASSIGNMENTSTATUS === 4" class="ml-auto" style="font-size: small;text-align: right;">
+                Completed
+                <ion-icon slot="end" color = "success" name="checkmark-circle"></ion-icon>
+              </ion-label>
+            </div>
+            <ion-label style="margin-top: 0rem; font-size: small;">{{lessonName}}</ion-label>
+            <p style="font-size: smaller;color: gray;">{{item.month}} {{item.date}}, {{item.day}} {{item.time}}</p>
+            <hr class="horizontal_line ion-text-center">
+            <h5 style="font-size: medium;">{{item.TITLE}}</h5>
+            <!-- <p style="margin: 0rem;font-size: smaller;color: gray;" class="ion-text-justify">{{item.ANSWER}}</p> -->
+          </div>
+        </div>
+        <hr color = "secondary">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <table mat-table [dataSource]="studentStatusData" class="mat-elevation-z8" *ngIf = "showStudent">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="ion-text-center"> Name </th>
+      <td mat-cell *matCellDef="let element" class="ion-text-center"> {{element.FIRSTNAME}} {{element.LASTNAME}} </td>
+    </ng-container>
+  
+    <!-- Listening Status -->
+    <ng-container matColumnDef="listening">
+      <th mat-header-cell *matHeaderCellDef class="ion-text-center"> Listening </th>
+      <td mat-cell *matCellDef="let element" class="ion-text-center"> 
+        <ion-icon *ngIf = "element.LISTENINGSTATUS === 1 || element.LISTENINGSTATUS === null" 
+        slot="icon-only" name="close-circle" color = "danger"></ion-icon>
+
+        <ion-icon *ngIf = "element.LISTENINGSTATUS === 2" 
+        slot="icon-only" name="caret-forward-circle" color = "primary"></ion-icon>
+
+        <ion-icon *ngIf = "element.LISTENINGSTATUS === 3" 
+        slot="icon-only" name="time" color = "warning"></ion-icon>
+
+        <ion-icon *ngIf = "element.LISTENINGSTATUS === 4" 
+        slot="icon-only" color = "success" name="checkmark-circle"></ion-icon>
+      </td>
+    </ng-container>
+  
+    <!-- Reading Status -->
+    <ng-container matColumnDef="reading">
+      <th mat-header-cell *matHeaderCellDef class="ion-text-center"> Reading </th>
+      <td mat-cell *matCellDef="let element" class="ion-text-center"> 
+        <ion-icon *ngIf = "element.LESSIONSTATUS === null" 
+        slot="icon-only" name="close-circle" color = "danger"></ion-icon>
+
+        <ion-icon *ngIf = "element.LESSIONSTATUS === 3" 
+        slot="icon-only" name="time" color = "warning"></ion-icon>
+
+        <ion-icon *ngIf = "element.LESSIONSTATUS === 4" 
+        slot="icon-only" color = "success" name="checkmark-circle"></ion-icon>
+      </td>
+    </ng-container>
+  
+    <!-- Assignment Status -->
+    <ng-container matColumnDef="assignment">
+      <th mat-header-cell *matHeaderCellDef class="ion-text-center"> Assignment </th>
+      <td mat-cell *matCellDef="let element" class="ion-text-center"> 
+        <ion-icon *ngIf = "element.ASSIGNMENTSTATUS === 1 || element.ASSIGNMENTSTATUS === null" 
+        slot="icon-only" name="close-circle" color = "danger"></ion-icon>
+
+        <ion-icon *ngIf = "element.ASSIGNMENTSTATUS === 2" 
+        slot="icon-only" name="caret-forward-circle" color = "primary"></ion-icon>
+
+        <ion-icon *ngIf = "element.ASSIGNMENTSTATUS === 3" 
+        slot="icon-only" name="time" color = "warning"></ion-icon>
+
+        <ion-icon *ngIf = "element.ASSIGNMENTSTATUS === 4"
+        slot="icon-only" color = "success" name="checkmark-circle"></ion-icon>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click) = "loadaddvideo()">
+        <ion-icon name="videocam-outline" color= "primary"></ion-icon>
+        <ion-label>Add Video</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadteacherpage()">
+        <ion-icon name="help-outline" color = "primary"> </ion-icon>
+        <ion-label>Clarify Doubts</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "navigatetohome()">
+        <ion-img src="../../../assets/images/medha.svg"></ion-img>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadAssignmentlist()">
+        <ion-icon name="document-text-outline" color = "primary"></ion-icon>
+        <ion-label>Assignment</ion-label>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon name="hourglass-outline" color = "primary"></ion-icon>
+        <ion-label>Reports</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> 
+ </ion-toolbar>

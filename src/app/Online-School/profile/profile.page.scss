@@ -1,0 +1,29 @@
+/* ion-avatar {
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 100px !important;  //any size
+    max-height: 100px !important; //any size 
+} */
+
+.avatar-div {
+    height: 35vh;
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+    // background-image: url('../../../assets/images/beach.jpg');
+    // background-position: center;
+    // background-size: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h5 {
+    padding-top: 1rem;
+    // color: white;
+}
+
+.avatar {
+    margin-top: 2rem;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

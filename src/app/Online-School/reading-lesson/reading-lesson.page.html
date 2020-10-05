@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Reading Lesson</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup] = "readingLessonForm" (ngSubmit) = "onSubmit()">
+
+    <ion-card>
+      <img src = "../../../assets/images/reading_lesson.jpeg" />
+      <ion-item>
+        <ion-avatar slot="start" [class] = "cssClass">
+          <ion-img src = "../../../assets/images/{{cssImage}}.png"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h1>{{subjectName}}</h1>
+          <p>{{lessonName}}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- <ion-item lines="none">
+        <ion-buttons slot="start">
+          <ion-button fill = "clear" size = "small" (click) = "openPdf()">
+            <ion-icon slot="start" name="book-outline"></ion-icon>
+            Read Lesson
+          </ion-button>
+          <ion-button fill = "clear" size = "small" (click) = "getPdfDownload()">
+            <ion-icon slot="start" name="cloud-download-outline"></ion-icon>
+            Download
+          </ion-button>
+        </ion-buttons>
+      </ion-item> -->
+
+      <ion-row>
+        <ion-col size = "6" class="ion-text-center">
+          <ion-button expand="block" fill = "clear" size = "small" (click) = "openPdf()">
+            <ion-icon slot="start" name="book-outline"></ion-icon>
+            Read Lesson
+          </ion-button>
+        </ion-col>
+        <ion-col size = "6" class="ion-text-center">
+          <ion-button expand="block" fill = "clear" size = "small" (click) = "getPdfDownload()">
+            <ion-icon slot="start" name="cloud-download-outline"></ion-icon>
+            Download
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+        <!-- <ion-row>
+          <ion-col size = "6" class="ion-text-center">
+            <ion-button expand="block" fill = "outline" color = "dark" size = "small" (click) = "openPdf()">
+              Read Lesson
+            </ion-button>
+          </ion-col>
+          <ion-col size = "6" class="ion-text-center">
+            <ion-button expand="block" fill = "outline" color = "dark" size = "small" (click) = "getPdfDownload()">
+              Download
+            </ion-button>
+          </ion-col>
+        </ion-row> -->
+
+      <ion-item lines="none">
+        <ion-row>
+          <ion-col size = "12">
+            <mat-radio-group aria-label="Status" formControlName="lessonStatus" color="primary">
+              <mat-radio-button *ngFor = "let status of statusList" [value] = "status.id">
+               {{status.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item>
+        <ion-badge *ngIf = "showNewFlag" color="success" slot="start">New</ion-badge>
+        <ion-buttons slot="end">
+          <ion-button size = "small" color = "primary" fill="clear" (click) = "onSubmit()">
+            SUBMIT
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-card>
+  </form>
+</ion-content>
+<ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button  (click) = "loadlisteningpage()">
+        <ion-icon color = "primary" name="play-circle-outline"></ion-icon>
+        <ion-label>Listening</ion-label>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon color = "primary" name="book-outline"></ion-icon>
+        <ion-label>Reading</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "navigatetohome()">
+        <ion-img src="../../../assets/images/medha.svg"></ion-img>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadraisingdoubtpage()">
+        <ion-icon name="help-outline" color = "primary"> </ion-icon>
+        <ion-label>Raising Doubt</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click) = "loadstudentassignment()">
+        <ion-icon name="document-text-outline" color = "primary"></ion-icon>
+        <ion-label>Assignment</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> 
+ </ion-toolbar>

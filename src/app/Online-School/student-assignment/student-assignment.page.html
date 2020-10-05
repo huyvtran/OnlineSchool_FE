@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Student Assignment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card color="success">
+          <ion-card-content class="ion-text-center">
+            <ion-card-title>
+              <span class= "card-txt">{{subjectName}}</span>  
+            </ion-card-title>
+            <ion-card-subtitle>
+              <span class= "card-txt">{{lessonId}}. {{lessonName}}</span>  
+            </ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="StudentassignmentForm" autocomplete="off">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Total Marks <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input type="text" required formControlName="TOTALMARKS" readonly>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+  <div *ngIf = "this.mode === 'add'">
+   <ion-row>
+    <ion-list-header>
+      {{i+1}}.&nbsp;
+      <ion-label>
+        {{question}}
+      </ion-label>
+    </ion-list-header>
+    </ion-row> 
+    <!--     <ul *ngFor = "let item of myarray"> -->
+          <mat-radio-group
+          class="example-radio-group"
+          formControlName="radioButton"
+        >
+        <mat-radio-button class="example-radio-button" *ngFor = "let opt of option; let j = index;" (click) = "data($event , j)" [value] = "opt">
+          {{opt}}
+        </mat-radio-button>
+      </mat-radio-group>
+           
+    </div>
+      
+      <ion-col size = "12" *ngIf = "this.mode === 'view'">
+        <ion-list>
+          <ion-radio-group *ngFor = "let item of modeldata; let j= index;"  >
+            <ion-list-header>
+              {{j+1}}.&nbsp;
+              <ion-label>
+                {{item.ASSIGNMENTQN}}
+              </ion-label>
+         
+            </ion-list-header>
+            <ion-item *ngFor = "let opt of item.Answerlist">
+              <ion-label>{{opt}}</ion-label>
+              <ion-checkbox color="success" [checked]="item.ANSWER === opt" slot="start" class="ion-text-right">
+              </ion-checkbox>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+      <ion-row [hidden]="i === this.quizlength-1 || this.mode === 'view'">
+        <ion-col class="ion-text-right">
+          <ion-button color="dark" fill="outline" #nextbutton
+            (click)="next(StudentassignmentForm.controls['radioButton'].value)"
+            [disabled]="StudentassignmentForm.controls['radioButton'].value === '' || disablebutton ">
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="i ===   this.quizlength-1">
+        <ion-col class="ion-text-center" [hidden]="this.mode === 'view'">
+          <ion-button color="dark" fill="outline"
+            (click)="onAddsubmit(StudentassignmentForm.controls['radioButton'].value)" [disabled]="disablebutton">Submit
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-content>
